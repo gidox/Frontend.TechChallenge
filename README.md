@@ -1,41 +1,34 @@
-# Front-end
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## The challenge
+## Getting Started
 
-Develop a SPA that will work as functional pokedex for our pokemon trainers.
+First, run the development server:
 
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-## Requirements
-The application should be supported in majority of modern browsers and it will be used on desktop and phones. Your solutions should be implemented in a project folder. When you think you are ready with the challenge: 
-- compress the project folder into a `zip` archive and send it back to our HR representative.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-OR
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-- publish the project in a publicly accessable repository platform such as **GitHub**.
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-API: https://pokeapi.co/.
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-### Core application:
-- Search for a pokemon
-- Sort Pokemon by:  Lowest Number (default), Highest number, A-Z, Z-A
-- See the pokemon detail
-- Suprise us!
+## Learn More
 
-### Extra mile!
+To learn more about Next.js, take a look at the following resources:
 
-Here you can find a few ideas which you can pick from! It's not mandatory, but are things might put your application on the spotlight!
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-- Have a state management
-- Follow some collor pallet coding (for future customizing)
-- Dark version
-- Use GraphQL
-- Animations
-- Pagination/Infinity scrolling
-- Unit tests
-- Storybook
-- e2e tests
-- Multi API enviroment support (only only production API, but could be easily modified to others url)
-- Have it deployed somewhere (f.e. https://heroku.com/)
-- Dockerize it
-- Consume `trainers.json` and display on the pokemon detail which trainers have that pokemon
-- Application monitoring
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
