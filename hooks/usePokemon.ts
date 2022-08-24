@@ -24,23 +24,16 @@ async function fetchPokemon(pokemonName: string): Promise<ResultData> {
   return request.data;
 }
 function usePokemon(pokemonName: string) {
-  return useQuery(
-    ["pokemon", pokemonName],
-    async () => {
-      const a = await fetchPokemon(pokemonName);
+  return useQuery(["pokemon", pokemonName], async () => {
+    const a = await fetchPokemon(pokemonName);
 
-      return {
-        image: a.sprites.front_default,
-        height: a.height,
-        weight: a.weight,
-        type: a.types.map((t) => t.type.name).join(", "),
-      };
-    },
-    {
-      // getNextPageParam: (lastPage) =>
-      //   lastPage.paging.current < lastPage.paging.total ? lastPage.paging.current + 1 : undefined,
-    }
-  );
+    return {
+      image: a.sprites.front_default,
+      height: a.height,
+      weight: a.weight,
+      type: a.types.map((t) => t.type.name).join(", "),
+    };
+  });
 }
 
 export default usePokemon;

@@ -31,9 +31,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
-          <meta content="width=device-width, initial-scale=1" name="viewport" />
-        </Head>
+        <Head />
         <body className="text-gray-700 bg-slate-100">
           <Main />
           <NextScript />

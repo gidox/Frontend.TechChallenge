@@ -1,8 +1,8 @@
 const Navbar = () => (
   <nav className=" mb-5 bg-white">
-    <div className="container mx-auto px-6 py-2 flex justify-between items-center">
+    <div className="container mx-auto  py-4 flex justify-between items-center">
       <a className="font-bold text-2xl lg:text-4xl" href="#">
-        SHMW
+        Paramo Poke App
       </a>
       <div className="block lg:hidden">
         <button className="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-800 hover:border-teal-500 appearance-none focus:outline-none">

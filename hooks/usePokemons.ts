@@ -13,22 +13,35 @@ export type Pokemon = {
   url: string;
 };
 
-async function fetchPokemons(): Promise<ResultData> {
-  const request = await fetchClient.get<ResultData>(`pokemon/`);
+async function fetchPokemons({
+  pageParam,
+}: {
+  pageParam?: string;
+}): Promise<ResultData> {
+  console.log({ pageParam });
+  const url = pageParam && pageParam !== "" ? pageParam : `pokemon/`;
+  const request = await fetchClient.get<ResultData>(url);
 
   return request.data;
 }
 function usePokemons() {
   return useInfiniteQuery(
     ["pokemons"],
-    async () => {
-      const data = await fetchPokemons();
+    async ({ pageParam }) => {
+      console.log({ a: pageParam });
+      try {
+        const data = await fetchPokemons({ pageParam });
 
-      return data;
+        console.log({ data });
+
+        return data;
+      } catch (error) {
+        console.log({ error });
+      }
     },
     {
-      // getNextPageParam: (lastPage) =>
-      //   lastPage.paging.current < lastPage.paging.total ? lastPage.paging.current + 1 : undefined,
+      getNextPageParam: (lastPage) => lastPage?.next,
+      getPreviousPageParam: (firstPage) => firstPage?.previous,
     }
   );
 }
