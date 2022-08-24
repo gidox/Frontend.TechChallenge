@@ -1,11 +1,17 @@
 import type { NextPage } from "next";
 
 import Head from "next/head";
+import { Fragment } from "react";
 
 import MainLayout from "../components/MainLayout";
 import PokemonCard from "../components/PokemonCard";
+import usePokemons from "../hooks/usePokemons";
 
 const Home: NextPage = () => {
+  const { data: pokemonData } = usePokemons();
+
+  console.log({ pokemonData });
+
   return (
     <MainLayout>
       <Head>
@@ -16,28 +22,26 @@ const Home: NextPage = () => {
       <h4 className="mt-8 mb-12 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-4xl">
         Pokemons
       </h4>
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <PokemonCard
-          avatarUrl="https://storage.googleapis.com/indie-hackers.appspot.com/avatars/300x300_DUFTlhOdmSdoT9F4r1Woo40pyML2.webp"
-          description="Free and Premium themes, UI Kit's, templates and landing pages built with Tailwind CSS, HTML & Next.js."
-          name="Foo"
-          type="grass"
-        />
-
-        <PokemonCard
-          avatarUrl="https://storage.googleapis.com/indie-hackers.appspot.com/avatars/300x300_DUFTlhOdmSdoT9F4r1Woo40pyML2.webp"
-          description="Free and Premium themes, UI Kit's, templates and landing pages built with Tailwind CSS, HTML & Next.js."
-          name="Foo"
-          type="grass"
-        />
-
-        <PokemonCard
-          avatarUrl="https://storage.googleapis.com/indie-hackers.appspot.com/avatars/300x300_DUFTlhOdmSdoT9F4r1Woo40pyML2.webp"
-          description="Free and Premium themes, UI Kit's, templates and landing pages built with Tailwind CSS, HTML & Next.js."
-          name="Foo"
-          type="grass"
-        />
+        {pokemonData?.pages.map((group, i) => (
+          <Fragment key={i}>
+            {group.results.map((pokemon) => (
+              <PokemonCard key={pokemon.name} name={pokemon.name} />
+            ))}
+          </Fragment>
+        ))}
+        {/* {pokemonData &&
+          pokemonData.pages > 0 &&
+          pokemonData.pages[0].results.map((pokemon) => (
+            <PokemonCard
+              key={pokemon.name}
+              avatarUrl="https://storage.googleapis.com/indie-hackers.appspot.com/avatars/300x300_DUFTlhOdmSdoT9F4r1Woo40pyML2.webp"
+              description="Free and Premium themes, UI Kit's, templates and landing pages built with Tailwind CSS, HTML & Next.js."
+              name="Foo"
+              type="grass"
+            />
+          ))}
+      </div> */}
       </div>
     </MainLayout>
   );
