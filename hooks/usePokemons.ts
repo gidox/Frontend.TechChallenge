@@ -15,11 +15,12 @@ export type Pokemon = {
 
 async function fetchPokemons({
   pageParam,
+  pokemonNameFilter,
 }: {
   pageParam?: string;
+  pokemonNameFilter?: string;
 }): Promise<ResultData> {
-  console.log({ pageParam });
-  const url = pageParam && pageParam !== "" ? pageParam : `pokemon/`;
+  const url = pageParam && pageParam !== "" ? pageParam : `pokemon`;
   const request = await fetchClient.get<ResultData>(url);
 
   return request.data;
@@ -28,16 +29,9 @@ function usePokemons() {
   return useInfiniteQuery(
     ["pokemons"],
     async ({ pageParam }) => {
-      console.log({ a: pageParam });
-      try {
-        const data = await fetchPokemons({ pageParam });
+      const data = await fetchPokemons({ pageParam });
 
-        console.log({ data });
-
-        return data;
-      } catch (error) {
-        console.log({ error });
-      }
+      return data;
     },
     {
       getNextPageParam: (lastPage) => lastPage?.next,

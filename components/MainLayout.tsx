@@ -9,6 +9,7 @@ type MainLayoutProps = {
 const MainLayout = ({ children }: MainLayoutProps) => (
   <div>
     <Head>
+      <title>Paramo poke app</title>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
     </Head>
     <Navbar />
